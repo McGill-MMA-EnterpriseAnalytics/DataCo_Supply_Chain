@@ -21,7 +21,7 @@
 </p>
 <ul>
 <li><b>Features Used:</b> Historical sales data, product categories, time-series features.</li>
-<li><b>Algorithms Considered:</b> ARIMA, LSTM, Prophet.</li></ul>
+<li><b>Algorithms Considered:</b> LSTM, Linear Regression, Gradient Boosting, Random Forest.</li></ul>
 
 <h3>2. Fraud Order Detection Prediction</h3>
 <p>This model focuses on identifying potentially fraudulent transactions. Early detection of fraud can significantly reduce financial losses and protect the company's reputation.
