@@ -31,7 +31,7 @@
 <li><b>Algorithms Considered:</b> Logistic Regression, Random Forest, Gradient Boosting.</li></ul>
 
 <h3>3. Fraud Order Traits Clustering</h3>
-<p>Beyond detection, understanding common traits among fraudulent orders can help in developing more effective prevention strategies. This model clusters fraudulent orders to uncover these traits.
+<p>Beyond detection, understanding common traits among fraudulent orders can help in developing more effective prevention strategies. This model clusters fraudulent orders to uncover these traits. While fraudsters constantly evolve their strategies to bypass detection mechanisms, the model can adapt to new patterns by updating the model with new data.
 </p>
 <ul>
 <li><b>Features Used:</b> Attributes of orders flagged as fraudulent.</li>
