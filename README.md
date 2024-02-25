@@ -35,7 +35,7 @@
 </p>
 <ul>
 <li><b>Features Used:</b> Attributes of orders flagged as fraudulent.</li>
-<li><b>Algorithms Considered:</b> K-Means, DBSCAN, Hierarchical Clustering.</li></ul>
+<li><b>Algorithms Considered:</b> K-Means, DBSCAN, Agglomerative Clustering.</li></ul>
 
 
 <h2>Methodology</h2>
