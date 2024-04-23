@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/TYS/Documents/study/Master/INSY695%20Enterprise%20Data%20Science%20II/Final%20Project/DataCo_Supply_Chain/models/mlruns/0/a86b5a98bc144e9bbcb9d57712b0315b/artifacts
+end_time: 1713910633813
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a86b5a98bc144e9bbcb9d57712b0315b
+run_name: valuable-pig-606
+run_uuid: a86b5a98bc144e9bbcb9d57712b0315b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713910220462
+status: 4
+tags: []
+user_id: TYS

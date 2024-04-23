@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/TYS/Documents/study/Master/INSY695%20Enterprise%20Data%20Science%20II/Final%20Project/DataCo_Supply_Chain/models/mlruns/0/ee7885c186944d0a9f0f879f07376379/artifacts
+end_time: 1713908917688
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ee7885c186944d0a9f0f879f07376379
+run_name: hilarious-auk-35
+run_uuid: ee7885c186944d0a9f0f879f07376379
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713908514419
+status: 4
+tags: []
+user_id: TYS

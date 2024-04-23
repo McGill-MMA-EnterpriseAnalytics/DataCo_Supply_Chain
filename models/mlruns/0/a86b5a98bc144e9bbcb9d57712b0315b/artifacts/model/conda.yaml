@@ -1,0 +1,17 @@
+channels:
+- conda-forge
+dependencies:
+- python=3.11.1
+- pip<=24.0
+- pip:
+  - mlflow==2.12.1
+  - cffi==1.15.1
+  - defusedxml==0.7.1
+  - h2o==3.46.0.1
+  - matplotlib==3.6.2
+  - numpy==1.26.4
+  - packaging==23.2
+  - pandas==1.5.3
+  - requests==2.31.0
+  - wcwidth==0.2.5
+name: mlflow-env

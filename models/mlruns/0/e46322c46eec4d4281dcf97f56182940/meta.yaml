@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/TYS/Documents/study/Master/INSY695%20Enterprise%20Data%20Science%20II/Final%20Project/DataCo_Supply_Chain/models/mlruns/0/e46322c46eec4d4281dcf97f56182940/artifacts
+end_time: 1713910894748
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e46322c46eec4d4281dcf97f56182940
+run_name: invincible-ray-506
+run_uuid: e46322c46eec4d4281dcf97f56182940
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713910807624
+status: 4
+tags: []
+user_id: TYS

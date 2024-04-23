@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/TYS/Documents/study/Master/INSY695%20Enterprise%20Data%20Science%20II/Final%20Project/DataCo_Supply_Chain/models/mlruns/0/a2db9dccf4ed4e499cb12ca32a9af34d/artifacts
+end_time: 1713909563650
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a2db9dccf4ed4e499cb12ca32a9af34d
+run_name: youthful-ram-817
+run_uuid: a2db9dccf4ed4e499cb12ca32a9af34d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713909205728
+status: 3
+tags: []
+user_id: TYS
