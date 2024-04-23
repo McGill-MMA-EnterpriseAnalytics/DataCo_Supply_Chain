@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/TYS/Documents/study/Master/INSY695%20Enterprise%20Data%20Science%20II/Final%20Project/DataCo_Supply_Chain/models/mlruns/0/d2b2025b3ae14b64959b1009c94c7451/artifacts
+end_time: 1713906072232
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d2b2025b3ae14b64959b1009c94c7451
+run_name: gaudy-skink-32
+run_uuid: d2b2025b3ae14b64959b1009c94c7451
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713905703738
+status: 3
+tags: []
+user_id: TYS
