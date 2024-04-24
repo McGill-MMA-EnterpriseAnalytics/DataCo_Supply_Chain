@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/yanhuanhuang/Desktop/MMA/INSY695-Adv%20Topics%20in%20Info%20Syst/DataCo_Supply_Chain/models/mlruns/133278343132896536/fb03a57f38d549378451524330ac7d15/artifacts
+end_time: 1713924765184
+entry_point_name: ''
+experiment_id: '133278343132896536'
+lifecycle_stage: active
+run_id: fb03a57f38d549378451524330ac7d15
+run_name: resilient-midge-201
+run_uuid: fb03a57f38d549378451524330ac7d15
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713924757578
+status: 3
+tags: []
+user_id: yanhuanhuang
