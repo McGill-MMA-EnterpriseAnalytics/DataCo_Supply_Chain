@@ -3,7 +3,7 @@ import pickle
 from sklearn.datasets import load_iris
 
 # Load the model from a file
-with open('iris_model.pkl', 'rb') as model_file:
+with open( 'iris_model.pkl', 'rb' ) as model_file:
     model = pickle.load(model_file)
 
 # Load some sample data for inference (replace with your own data loading mechanism)

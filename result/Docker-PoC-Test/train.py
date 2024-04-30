@@ -11,5 +11,5 @@ model = RandomForestClassifier()
 model.fit(X, y)
 
 # Save the model to disk
-with open('iris_model.pkl', 'wb') as file:
+with open( 'iris_model.pkl', 'wb' ) as file:
     pickle.dump(model, file)
