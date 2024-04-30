@@ -1,27 +1,20 @@
-# Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
-# Set the working directory to /app
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    default-jre \
-    gcc \
-    g++ \
-    libgfortran5
+# Copy only pyproject.toml and poetry.lock to cache dependency installation
+COPY pyproject.toml poetry.lock* /app/
 
-# Copy the current directory contents into the container at /app
+# Install Poetry
+RUN pip install poetry
+
+# Project dependencies are installed separately to utilize Docker cache
+RUN poetry config virtualenvs.create false \
+    && poetry install --no-interaction --no-ansi
+
+# Copy the rest of your application code
 COPY . /app
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 80
 
-# Expose port 8080 for the Flask app
-EXPOSE 8080
-
-# Define environment variable
-ENV MODEL_PATH /app/DeepLearning_1_AutoML_8_20240423_184508
-
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
