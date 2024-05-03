@@ -5,27 +5,21 @@ import pandas as pd
 
 # Define a request body model
 class Item(BaseModel):
-    Type: str
-    Days_for_shipment_scheduled: int
-    Category_Name: str
-    Customer_City: str
-    Customer_Country: str
-    Customer_Segment: str
-    Customer_State: str
-    Department_Name: str
-    Market: str
-    Order_City: str
-    Order_Country: str
-    Order_Item_Discount_Rate: float
-    Sales: float
-    Order_Region: str
-    Order_State: str
-    Product_Name: str
-    Shipping_Mode: str
-    Day_of_Week: int
-    Month: int
-    Year: int
-    Week_of_Year: int
+    Type: int
+    order_day: int
+    order_hour: int
+    order_minute: int
+    Benefit_per_order: float
+    Latitude: float
+    Longitude: float
+    Order_City: int
+    Order_Country: int
+    Order_State: int
+    shipping_day: int
+    shipping_hour: int
+    shipping_minute: int
+    Shipping_Mode: int
+    Late_delivery_risk: int
 
 # Initialize the FastAPI app
 app = FastAPI()
