@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/yanhuanhuang/Desktop/MMA/INSY695-Adv%20Topics%20in%20Info%20Syst/DataCo_Supply_Chain/models/fraud_detection/mlruns/475061790781141867/9297a5c360a94d1cb7bc1abb3d6c61ed/artifacts
+end_time: 1714831779830
+entry_point_name: ''
+experiment_id: '475061790781141867'
+lifecycle_stage: active
+run_id: 9297a5c360a94d1cb7bc1abb3d6c61ed
+run_name: abrasive-moose-856
+run_uuid: 9297a5c360a94d1cb7bc1abb3d6c61ed
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714831767607
+status: 3
+tags: []
+user_id: yanhuanhuang

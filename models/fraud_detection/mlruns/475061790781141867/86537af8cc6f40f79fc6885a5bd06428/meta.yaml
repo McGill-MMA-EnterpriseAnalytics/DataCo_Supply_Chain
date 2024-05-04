@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/yanhuanhuang/Desktop/MMA/INSY695-Adv%20Topics%20in%20Info%20Syst/DataCo_Supply_Chain/models/fraud_detection/mlruns/475061790781141867/86537af8cc6f40f79fc6885a5bd06428/artifacts
+end_time: 1714830627056
+entry_point_name: ''
+experiment_id: '475061790781141867'
+lifecycle_stage: active
+run_id: 86537af8cc6f40f79fc6885a5bd06428
+run_name: auspicious-crane-91
+run_uuid: 86537af8cc6f40f79fc6885a5bd06428
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714830611244
+status: 3
+tags: []
+user_id: yanhuanhuang
