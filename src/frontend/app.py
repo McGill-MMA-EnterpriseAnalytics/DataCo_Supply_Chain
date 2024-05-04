@@ -4,10 +4,10 @@ import pickle
 import xgboost as xgb
 
 # Load model (make sure to provide the correct path to the model file)
-model1 = pickle.load(open('../result/deploy/fraud_detection_xgb.pkl', 'rb'))
-model2 = pickle.load(open('../result/deploy/fraud_detection_xgb.pkl', 'rb'))
+model1 = pickle.load(open('../../result/deploy/fraud_detection_xgb.pkl', 'rb'))
+model2 = pickle.load(open('../../cdresult/deploy/fraud_detection_xgb.pkl', 'rb'))
 
-def predict(input_data):
+def predict(input_data, model):
     # Convert the DataFrame to DMatrix
     dmatrix_data = xgb.DMatrix(input_data)
     # Make predictions
