@@ -40,8 +40,8 @@ def main():
 
     # Load models safely with error handling
     try:
-        model1 = pickle.load(open('../../result/deploy/demand_forecast/demand_forecast.pkl', 'rb'))
-        model2 = pickle.load(open('../../result/deploy/fraud_detection/fraud_detection_xgb.pkl', 'rb'))
+        model1 = pickle.load( open( '../../result/deploy/demand_forecast_fastapi/demand_forecast.pkl', 'rb' ) )
+        model2 = pickle.load( open( '../../result/deploy/fraud_detection_fastapi/fraud_detection_xgb.pkl', 'rb' ) )
     except Exception as e:
         st.error(f"Failed to load models: {e}")
         st.stop()
