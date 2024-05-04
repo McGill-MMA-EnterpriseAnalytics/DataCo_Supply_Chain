@@ -1,49 +1,92 @@
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.compose import ColumnTransformer
 from imblearn.over_sampling import SMOTE
+from imblearn.pipeline import Pipeline as ImbPipeline
 
 
-def preprocess_data(data):
-    # Perform the same preprocessing steps as before
-    data['order date'] = pd.to_datetime ( data['order date (DateOrders)'] )
-    data['shipping date'] = pd.to_datetime ( data['shipping date (DateOrders)'] )
+class DateConverter ( BaseEstimator, TransformerMixin ):
+    def fit(self, X, y=None):
+        return self
 
-    data['order year'] = data['order date'].dt.year
-    data['order month'] = data['order date'].dt.month
-    data['order day'] = data['order date'].dt.day
-    data['order hour'] = data['order date'].dt.hour
-    data['order minute'] = data['order date'].dt.minute
+    def transform(self, X):
+        X = X.copy ()
+        X['order date'] = pd.to_datetime ( X['order date (DateOrders)'] )
+        X['shipping date'] = pd.to_datetime ( X['shipping date (DateOrders)'] )
+        return X
 
-    data['shipping year'] = data['shipping date'].dt.year
-    data['shipping month'] = data['shipping date'].dt.month
-    data['shipping day'] = data['shipping date'].dt.day
-    data['shipping hour'] = data['shipping date'].dt.hour
-    data['shipping minute'] = data['shipping date'].dt.minute
 
-    data_n = data.loc[:,
-             ['Type', 'Days for shipment (scheduled)', 'order year', 'order month', 'order day', 'order hour',
-              'order minute', 'Benefit per order', 'Category Name', 'Latitude', 'Longitude', 'Customer Segment',
-              'Department Name', 'Market', 'Order City', 'Order Country', 'Order Item Discount',
-              'Order Item Product Price', 'Order Item Quantity', 'Order Item Total', 'Order State', 'Product Name',
-              'shipping year', 'shipping month', 'shipping day', 'shipping hour', 'shipping minute', 'Shipping Mode',
-              'Late_delivery_risk', 'Order Status']]
-    data_n['Order Status'] = [0 if i != 'SUSPECTED_FRAUD' else 1 for i in data_n['Order Status']]
+class FeatureEngineering ( BaseEstimator, TransformerMixin ):
+    def fit(self, X, y=None):
+        return self
 
-    enc = LabelEncoder ()
-    for col in data_n.columns:
-        if data_n[col].dtype == 'object':
-            data_n[col] = enc.fit_transform ( data_n[col] )
+    def transform(self, X):
+        X = X.copy ()
+        for feature in ['order date', 'shipping date']:
+            prefix = feature.split ()[0]
+            X[f'{prefix} year'] = X[feature].dt.year
+            X[f'{prefix} month'] = X[feature].dt.month
+            X[f'{prefix} day'] = X[feature].dt.day
+            X[f'{prefix} hour'] = X[feature].dt.hour
+            X[f'{prefix} minute'] = X[feature].dt.minute
+        return X[['Type', 'order day', 'order hour', 'order minute', 'Benefit per order', 'Latitude', 'Longitude',
+                  'Order City',
+                  'Order Country', 'Order State', 'shipping day', 'shipping hour', 'shipping minute', 'Shipping Mode',
+                  'Late_delivery_risk']]
 
-    y = data_n['Order Status']
-    X = data_n.drop ( ['Order Status'], axis=1 )
 
-    name = X.columns
-    X = StandardScaler ().fit_transform ( X )
-    X = pd.DataFrame ( X, columns=name )
+class CategoricalEncoder ( BaseEstimator, TransformerMixin ):
+    def __init__(self):
+        self.encoders = {}
 
-    # No need to split the data here
+    def fit(self, X, y=None):
+        for col in X.columns:
+            if X[col].dtype == 'object':
+                le = LabelEncoder ()
+                le.fit ( X[col] )
+                self.encoders[col] = le
+        return self
 
-    smote = SMOTE ( random_state=42 )
-    X_resampled, y_resampled = smote.fit_resample ( X, y )
+    def transform(self, X):
+        X = X.copy ()
+        for col, encoder in self.encoders.items ():
+            if col in X.columns:
+                X[col] = encoder.transform ( X[col] )
+        return X
 
-    return X_resampled, y_resampled
+
+class DataFrameConverter ( BaseEstimator, TransformerMixin ):
+    def __init__(self, column_names):
+        self.column_names = column_names
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        return pd.DataFrame ( X, columns=self.column_names )
+
+
+def build_pipeline():
+    all_cols = ['Type', 'order day', 'order hour', 'order minute', 'Benefit per order', 'Latitude', 'Longitude',
+                'Order City',
+                'Order Country', 'Order State', 'shipping day', 'shipping hour', 'shipping minute', 'Shipping Mode',
+                'Late_delivery_risk']
+
+    pipeline = ImbPipeline ( steps=[
+        ('date_converter', DateConverter ()),
+        ('feature_engineering', FeatureEngineering ()),
+        ('encode_categorical', CategoricalEncoder ()),
+        ('scaler', StandardScaler ()),
+        ('to_dataframe', DataFrameConverter ( column_names=all_cols ))
+    ] )
+
+    return pipeline
+
+
+def preprocess_for_prediction(df):
+    pipeline = build_pipeline ()
+    processed_data = pipeline.fit_transform ( df )
+    y = df['Order Status'].map ( lambda x: 0 if x != 'SUSPECTED_FRAUD' else 1 )
+    return processed_data
