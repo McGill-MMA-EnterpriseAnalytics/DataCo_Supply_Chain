@@ -1,5 +1,5 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/vital-domain-422306-p3/streamlit-frontend', '.']
+    args: ['build', '-t', 'gcr.io/pro-micron-422215-q1/streamlit-frontend', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/vital-domain-422306-p3/streamlit-frontend']
+    args: ['push', 'gcr.io/pro-micron-422215-q1/streamlit-frontend']
