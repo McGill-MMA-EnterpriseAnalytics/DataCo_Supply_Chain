@@ -1,50 +1,43 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException, UploadFile, File
 import pandas as pd
-from preprocessing_script import preprocess_data  # Import the preprocessing function
+from preprocessing_script import preprocess_for_prediction
 from model_loader import load_model, make_prediction
+import logging
+import numpy as np
+from io import BytesIO
 
-# Define a request body model
-class Item(BaseModel):
-    Type: int
-    order_day: int
-    order_hour: int
-    order_minute: int
-    Benefit_per_order: float
-    Latitude: float
-    Longitude: float
-    Order_City: int
-    Order_Country: int
-    Order_State: int
-    shipping_day: int
-    shipping_hour: int
-    shipping_minute: int
-    Shipping_Mode: int
-    Late_delivery_risk: int
-
-# Initialize the FastAPI app
-app = FastAPI()
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("uvicorn")
 
 # Load the model
-model_path = 'fraud_detection_xgb.pkl'
-model = load_model(model_path)
+model = load_model('fraud_detection_xgb.pkl')
 
-@app.post("/predict/")
-def predict_order(item: Item):
-    # Convert Pydantic model to dictionary, then to DataFrame
-    data = item.dict()
-    data_df = pd.DataFrame([data])  # Convert the dictionary to a DataFrame
+app = FastAPI()
 
-    # Preprocess the data using the preprocessing script
-    X, _ = preprocess_data(data_df)
-
-    # Perform prediction using the trained model
+@app.post("/upload_predict/")
+async def upload_predict(file: UploadFile = File(...)):
+    logger.info(f"Received file with filename: {file.filename}")
     try:
-        prediction = make_prediction(model, X)
-        return {"prediction": prediction}
-    except Exception as e:
-        return {"error": str(e)}
+        # Read file content into DataFrame
+        contents = await file.read()
+        df = pd.read_csv(BytesIO(contents), encoding='ISO-8859-1')
+        logger.info(f"Data read successfully with columns: {df.columns.tolist()}")
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+        # Perform preprocessing for prediction
+        processed_data = preprocess_for_prediction(df)
+
+        # Make prediction using the model
+        prediction = make_prediction(model, processed_data)
+
+        # Convert prediction probabilities to binary class labels
+        prediction_class = (prediction > 0.5607).astype(int)
+
+        # Convert prediction class to list for JSON serialization
+        prediction_list = prediction_class.tolist()
+
+        return {"message": "Prediction made successfully", "prediction": prediction_list}
+    except Exception as e:
+        error_msg = f"An error occurred during processing: {str(e)}"
+        logger.error(error_msg)
+        raise HTTPException(status_code=500, detail=error_msg)
