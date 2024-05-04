@@ -31,7 +31,7 @@ class Item(BaseModel):
 app = FastAPI()
 
 # Load your trained model
-with open( 'fraud_detection_xgb.pkl', 'rb' ) as f:
+with open( 'demand_forecast.pkl', 'rb' ) as f:
     model = pickle.load(f)
 
 @app.post("/predict/")
