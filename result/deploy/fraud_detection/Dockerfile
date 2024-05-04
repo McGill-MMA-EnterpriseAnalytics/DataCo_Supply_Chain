@@ -8,9 +8,6 @@ ENV PYTHONUNBUFFERED 1
 # Set the working directory in the container
 WORKDIR /app
 
-# Install system dependencies (if necessary)
-RUN apt-get update && apt-get install -y gcc libpq-dev
-
 # Install Poetry
 RUN pip install poetry
 
@@ -22,10 +19,11 @@ RUN poetry config virtualenvs.create false \
     && poetry install --no-dev --no-interaction --no-ansi
 
 # Copy the rest of your application code
-COPY .. /app
+COPY . /app
+
+# Expose the port the app runs on
+EXPOSE 80
 
 # Command to run the application using Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 
-# Expose the port the app runs on
-EXPOSE 80

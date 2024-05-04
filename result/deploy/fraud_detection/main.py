@@ -1,7 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import pickle
 import pandas as pd
+from preprocessing_script import preprocess_data  # Import the preprocessing function
+from model_loader import load_model, make_prediction
 
 # Define a request body model
 class Item(BaseModel):
@@ -24,20 +25,23 @@ class Item(BaseModel):
 # Initialize the FastAPI app
 app = FastAPI()
 
-# Load your trained model
-with open('fraud_detection_xgb.pkl', 'rb') as f:
-    model = pickle.load(f)
+# Load the model
+model_path = 'fraud_detection_xgb.pkl'
+model = load_model(model_path)
 
 @app.post("/predict/")
-def predict(item: Item):
-    # Convert Pydantic model to dictionary, then to DataFrame or directly use in prediction
+def predict_order(item: Item):
+    # Convert Pydantic model to dictionary, then to DataFrame
     data = item.dict()
     data_df = pd.DataFrame([data])  # Convert the dictionary to a DataFrame
 
-    # Predict using the model
+    # Preprocess the data using the preprocessing script
+    X, _ = preprocess_data(data_df)
+
+    # Perform prediction using the trained model
     try:
-        prediction = model.predict(data_df)
-        return {"prediction": prediction.tolist()}
+        prediction = make_prediction(model, X)
+        return {"prediction": prediction}
     except Exception as e:
         return {"error": str(e)}
 

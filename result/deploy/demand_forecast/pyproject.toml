@@ -20,7 +20,6 @@ uvicorn = "^0.29.0"
 xgboost = "^2.0.3"
 jupyter = "^1.0.0"
 ipykernel = "^6.29.4"
-imblearn = "^0.0"
 
 
 [build-system]
