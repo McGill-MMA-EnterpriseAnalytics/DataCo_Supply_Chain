@@ -1,10 +1,10 @@
-FROM python:3.9
+FROM python:3.9-slim
 
 # Set environment variables to prevent Python from writing pyc files to disc and buffer stdout and stderr
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /fraud_detection_streamlit_cloud
+WORKDIR /app
 
 RUN pip install poetry
 
@@ -14,7 +14,7 @@ RUN poetry config virtualenvs.create false \
     && poetry install --no-dev --no-interaction --no-ansi
 
 # Copy the rest of your application code
-COPY . /fraud_detection_streamlit_cloud
+COPY . /app
 
 # Expose the port Streamlit runs on
 EXPOSE 8080
