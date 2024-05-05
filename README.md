@@ -47,7 +47,7 @@
 <p>In Fraud Order Clustering, preprocessing including filtering and standardization was performed prior to selecting the optimal cluster count via inertia calculation. The KMeans algorithm clustered the data, and cluster centroids were inversely transformed for feature visualization. DBSCAN was also employed to derive six distinct clusters and detect dataset noise, thereby strengthening the fraud detection process.</p>
 
 <h2>Architecture</h2>
-![alt text](https://github.com/McGill-MMA-EnterpriseAnalytics/DataCo_Supply_Chain/blob/main/images/architecture%20flowchart.png)
+![architecture flowchart](https://github.com/McGill-MMA-EnterpriseAnalytics/DataCo_Supply_Chain/blob/main/images/architecture_flowchart.png)
 
 <h2>Results and Discussion</h2>
 <p>In Demand Prediction, Gradient Boosting emerged as the superior model among four candidates, achieving a mean squared error of 9.05, indicating its effectiveness in forecasting product demand across various categories and regions, thereby facilitating inventory management. For Fraud Detection, the LightGBM model stood out with an impressive accuracy of 0.99 and precision of 0.65, outperforming other models. Notable features for detecting fraud included the type of transaction, late delivery risk, shipping mode, and order month. This detection is crucial in mitigating financial losses and refining demand prediction models. Collectively, these models provide a multifaceted approach to improving operational efficiency, securing revenue, and ensuring sustainable business growth through data-driven decision-making.</p>
