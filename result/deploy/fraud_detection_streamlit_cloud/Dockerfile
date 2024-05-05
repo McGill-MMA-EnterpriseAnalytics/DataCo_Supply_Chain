@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.9
 
 # Set environment variables to prevent Python from writing pyc files to disc and buffer stdout and stderr
 ENV PYTHONDONTWRITEBYTECODE 1
