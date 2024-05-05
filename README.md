@@ -3,6 +3,8 @@
 <h2>Executive Summary</h2>
 <p>This project focuses on leveraging the DataCo Smart Supply Chain dataset from Kaggle to build predictive models that serve critical business functions: forecasting monthly demand, detecting fraudulent orders, and clustering orders to identify common traits in fraud cases. Through sophisticated data analysis and machine learning techniques, this initiative aims to enhance operational efficiency, mitigate risks, and drive strategic decision-making in supply chain management.</p>
 
+<p>This project comprises two phases. In Phase 1, the focus is on developing predictive models to aid businesses in conducting demand forecasts and detecting fraud threats. Phase 2 involves the application of advanced methods such as MLflow and H2O to enhance model development, construct comprehensive data pipelines, and integrate techniques for model fairness and explainability. Additionally, we create a comprehensive architectural plan to package the models seamlessly from local environments to Google Cloud, ensuring smooth operations across devices.</p>
+
 <h2>Dataset Overview</h2>
 <p>The dataset comprises supply chain data from DataCo Global, including transaction records, customer data, product information, and logistics. Key features include order IDs, product categories, quantities ordered, customer locations, payment methods, and more. This rich dataset provides a comprehensive view of the company's operations, serving as a foundation for our predictive models.</p>
 <p>Key Dataset Features:</p>
