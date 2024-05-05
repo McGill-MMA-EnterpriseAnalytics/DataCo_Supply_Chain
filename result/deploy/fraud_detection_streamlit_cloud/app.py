@@ -4,6 +4,7 @@ import requests
 from io import BytesIO
 import plotly.express as px
 from st_aggrid import AgGrid, GridOptionsBuilder
+import os
 
 # Using an emoji as an icon in the title
 st.set_page_config ( page_title="Fraud Detection Dashboard", page_icon=":package:" )
@@ -31,7 +32,7 @@ if uploaded_file is not None:
         data.to_csv ( buf, index=False, encoding='ISO-8859-1' )
         buf.seek ( 0 )
 
-        url = 'https://mlproject-smbfygbzda-uc.a.run.app/docs#/default/upload_predict_upload_predict__post' # Google Cloud URL
+        url = 'https://mlproject-smbfygbzda-uc.a.run.app/docs#' # Google Cloud URL
         # url = 'http://localhost:8000/upload_predict/'  # Local URL of the FastAPI endpoint
         files = {'file': buf}
         response = requests.post ( url, files=files )
