@@ -1,0 +1,19 @@
+##########################################
+##### Fraud Detection Docker Images ######
+##########################################
+
+- This use case has 2 images in total
+- Image 1 is for model prediction + FastAPI
+- Image 2 is for streamlit
+
+#### How to create Docker Image? #####
+Step 1: Please go to the right directory in your terminal
+Step 2: Please run the following commands to create the image locally.
+
+# Create Image 1
+docker build -t fraud-detection-api
+docker run -p 8000:8000 fraud-detection-api   # Run the fastapi locally
+
+# Create Image 2
+docker build -t fraud-detection-streamlit .
+streamlit run app.py   # Run the streamlit app locally
