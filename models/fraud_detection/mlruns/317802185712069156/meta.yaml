@@ -1,0 +1,6 @@
+artifact_location: file:///Users/hongyizhan/Desktop/MCGILL/ml%20insy695/DataCo_Supply_Chain/models/fraud_detection/mlruns/317802185712069156
+creation_time: 1714937404170
+experiment_id: '317802185712069156'
+last_update_time: 1714937404170
+lifecycle_stage: active
+name: Feature_Selection_with_RFE

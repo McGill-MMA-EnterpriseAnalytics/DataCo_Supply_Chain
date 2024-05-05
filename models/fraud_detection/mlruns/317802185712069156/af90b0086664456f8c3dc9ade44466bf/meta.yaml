@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/hongyizhan/Desktop/MCGILL/ml%20insy695/DataCo_Supply_Chain/models/fraud_detection/mlruns/317802185712069156/af90b0086664456f8c3dc9ade44466bf/artifacts
+end_time: 1714937414152
+entry_point_name: ''
+experiment_id: '317802185712069156'
+lifecycle_stage: active
+run_id: af90b0086664456f8c3dc9ade44466bf
+run_name: upbeat-sheep-493
+run_uuid: af90b0086664456f8c3dc9ade44466bf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714937404251
+status: 3
+tags: []
+user_id: hongyizhan
