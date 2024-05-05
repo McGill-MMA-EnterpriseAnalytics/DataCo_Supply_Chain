@@ -49,6 +49,8 @@
 
 
 <h2>Team Members</h2>
+
+<h3>Phase 1</h3>
 <ul>
 <li><b>Ge Gao</b> - Data Scientist</li>
 <li><b>Hongyi Zhan</b> - Data Scientist</li>
@@ -57,6 +59,16 @@
 <li><b>Rebecca Zhang</b> - Product Manager</li>
 <li><b>Yanhuan Huang</b> - Data Analyst</li>
 
+</ul>
+
+<h3>Phase 2</h3>
+<ul>
+<li><b>Ge Gao</b> - Data Scientist</li>
+<li><b>Hongyi Zhan</b> - Data Scientist</li>
+<li><b>Kelly Kao</b> - Data Analyst</li>
+<li><b>Ko-Jen Wang</b> - Project Manager</li>
+<li><b>Yanhuan Huang</b> - Data Analyst / Data Engineer</li>
+<li><b>Yusen Tang</b> - Data Engineer</li>
 
 </ul>
 
