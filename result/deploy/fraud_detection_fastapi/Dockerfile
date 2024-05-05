@@ -27,8 +27,13 @@ COPY fraud_detection_xgb.pkl /app/
 # Copy the rest of your application code
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 80
+# Uncomment for LOCAL deployment - Expose the port the app runs on
+#EXPOSE 80
 
-# Command to run the application using Uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+# Uncomment for LOCAL deployment - Command to run the application using Uvicorn
+#CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+
+# Uncomment for Google Cloud Run deployment - run the application using Uvicorn, listen on PORT environment variable
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}
+
+

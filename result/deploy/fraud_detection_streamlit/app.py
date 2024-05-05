@@ -4,9 +4,13 @@ import requests
 from io import BytesIO
 import plotly.express as px
 from st_aggrid import AgGrid, GridOptionsBuilder
+import os
 
 # Using an emoji as an icon in the title
 st.set_page_config ( page_title="Fraud Detection Dashboard", page_icon=":package:" )
+
+# Display the port being used (for debugging purposes, will be removed in production)
+# st.write(f"Listening on port: {os.getenv('PORT')}")
 
 st.title ( 'Fraud Detection Dashboard :mag:' )
 
@@ -31,7 +35,11 @@ if uploaded_file is not None:
         data.to_csv ( buf, index=False, encoding='ISO-8859-1' )
         buf.seek ( 0 )
 
-        url = 'http://localhost:8000/upload_predict/'  # URL of the FastAPI endpoint
+        # Uncomment for LOCAL deployment: URL of the FastAPI endpoint
+        url = 'http://localhost:8000/upload_predict/'
+
+        # Uncomment for Google Cloud Run deployment
+        # url = 'https://fraud-detection-api-f344r4pxoa-uc.a.run.app/upload_predict/'
         files = {'file': buf}
         response = requests.post ( url, files=files )
 
