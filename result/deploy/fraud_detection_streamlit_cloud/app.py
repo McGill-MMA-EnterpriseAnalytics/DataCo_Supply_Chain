@@ -31,7 +31,8 @@ if uploaded_file is not None:
         data.to_csv ( buf, index=False, encoding='ISO-8859-1' )
         buf.seek ( 0 )
 
-        url = 'http://localhost:8000/upload_predict/'  # URL of the FastAPI endpoint
+        url = 'https://mlproject-smbfygbzda-uc.a.run.app/docs#/default/upload_predict_upload_predict__post' # Google Cloud URL
+        # url = 'http://localhost:8000/upload_predict/'  # Local URL of the FastAPI endpoint
         files = {'file': buf}
         response = requests.post ( url, files=files )
 
