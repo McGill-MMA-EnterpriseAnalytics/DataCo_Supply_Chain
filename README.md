@@ -18,6 +18,7 @@
 </ul>
 
 <h2>Models</h2>
+<h3>Phase 1:</h3>
 <h3>1. Monthly Demand Prediction</h3>
 <p>This model aims to predict the monthly demand for products in the supply chain. By understanding demand patterns, the company can optimize inventory levels, reduce holding costs, and improve customer satisfaction.
 </p>
@@ -39,12 +40,34 @@
 <li><b>Features Used:</b> Attributes of orders flagged as fraudulent.</li>
 <li><b>Algorithms Considered:</b> K-Means, DBSCAN, Agglomerative Clustering.</li></ul>
 
+<h3>Phase 2:</h3>
+In this phase, our focus is primarily on refining demand forecast and fraud detection models through further analysis and approaches.
+<h3>1. MLflow and H2O</h3>
+<p>This approach aims to improve the model development results in phase 1. Both use cases are conducted through H2O and MLflow techniques.</p>
+<ul>
+<li>Commence the MLflow experiment, setting up and training models using H2O's AutoML functionality, limiting the models to 12 for manageability, and diligently logging configuration parameters and metrics.</li>
+<li>Display variable importance, preserve the AutoML leaderboard, and conclude the MLflow experiment to finalize logging and tracking procedures.</li>
+</ul>
+<h3>2. Model Fairness and Explainability</h3>
+<ul>
+<li><b>FairML:</b> Utilize FairML to evaluate the models by quantifying the relative significance of the model’s variables.</li>
+<li><b>LIME:</b> Use LIME to explain the model’s prediction for individual instances.</li></ul>
 
 <h2>Methodology</h2>
 <p>In the handling of a substantial dataset exceeding 180,000 rows and 40 columns, comprehensive preprocessing was imperative in both the exploratory and model development phases to guarantee robust outputs. The exploratory data analysis (EDA) included pruning columns with unique values and restructuring datetime columns. This refined dataset was then saved as a CSV to facilitate subsequent modeling. The EDA examined numerical and categorical variables distinctly and included an OLS regression analysis detailing total profit per order, temporal order trends, and an assessment of fraudulent transactions, thus laying the groundwork for subsequent predictive modeling.</p>
+
+<h3>Phase 1:</h3>
+<p>In phase 1, we developed three types of models to provide comprehensive analysis on supply chain dataset.</p>
 <p>In Demand Prediction, models aggregated sales, shipping durations, and product prices to forecast monthly orders. Data preprocessing preceded feature selection via Random Forest. Subsequent tuning involved Long Short-Term Memory (LSTM) networks, Random Forest, Gradient Boosting, and Logistic Regression models, leveraging Mean Absolute Error (MAE) and Mean Squared Error (MSE) metrics to refine predictive accuracy.</p>
 <p>For Fraud Detection, the dataset underwent preprocessing, including feature engineering and label encoding, followed by oversampling to correct data imbalances. Recursive Feature Elimination (RFE) was utilized for feature selection. The tuning of the model involved ensemble methods, employing a voting classifier that integrated Logistic Regression, Random Forest, and Support Vector Machine (SVM), alongside boosting algorithms such as XGBoost and LightGBM, which enhanced the accuracy of fraud identification.</p>
 <p>In Fraud Order Clustering, preprocessing including filtering and standardization was performed prior to selecting the optimal cluster count via inertia calculation. The KMeans algorithm clustered the data, and cluster centroids were inversely transformed for feature visualization. DBSCAN was also employed to derive six distinct clusters and detect dataset noise, thereby strengthening the fraud detection process.</p>
+
+<h3>Phase 2:</h3>
+<p>In phase 2, our objective was to enhance the models and structure a comprehensive architecture map.</p>
+<p>To advance the models, we address missing values and streamline our dataset by dropping unnecessary columns. Following this, we aggregate the data based on categories such as "Type" and "Customer City" to facilitate further analysis. In this step, we also noticed the potential data leakage issue and dropped some columns to avoid this problem. Next, we retrieve the initial 2000 rows of data to conduct our subsequent analysis. Then, we initialize the H2O machine learning platform and import our dataset, converting the dataframe into an H2O Frame for compatibility.</p>
+
+<p>Subsequently, we begin the MLflow experiment, setting up and training models using H2O's AutoML functionality. To ensure manageability, we restrict the number of models generated to 12. Throughout this process, we meticulously log configuration parameters and metrics, which encompass the number of models, RMSE, and R^2 for demand forecast, as well as F1 score and precision score for fraud detection. Following model training, we display the variable importance and preserve the AutoML leaderboard for reference. Finally, we conclude the MLflow experiment, thereby finalizing the logging and tracking procedures.</p>
+
 
 <h2>Architecture</h2>
 ![architecture_flowchart](images/architecture_flowchart.png)
