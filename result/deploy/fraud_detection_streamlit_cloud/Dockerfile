@@ -17,7 +17,7 @@ RUN poetry config virtualenvs.create false \
 COPY . .
 
 # Expose the port Streamlit runs on
-EXPOSE 8501
+EXPOSE 8080
 
 # Uncomment for LOCAL deployment - Command to run the Streamlit application
 # CMD ["poetry", "run", "streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
