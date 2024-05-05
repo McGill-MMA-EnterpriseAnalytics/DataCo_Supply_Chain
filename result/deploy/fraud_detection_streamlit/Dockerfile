@@ -19,5 +19,9 @@ COPY . .
 # Expose the port Streamlit runs on
 EXPOSE 8501
 
-# Command to run the Streamlit application
+# Uncomment for LOCAL deployment - Command to run the Streamlit application
 CMD ["poetry", "run", "streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+
+# Uncomment for Google Cloud Run deployment - adapt the Cloud Run deployment to respect the PORT environment variable
+#CMD poetry run streamlit run app.py --server.port=$PORT --server.address=0.0.0.0
+
