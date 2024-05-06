@@ -70,7 +70,7 @@ In this phase, our focus is primarily on refining demand forecast and fraud dete
 
 
 <h2>Architecture</h2>
-![architecture_flowchart](https://github.com/McGill-MMA-EnterpriseAnalytics/DataCo_Supply_Chain/blob/main/images/architecture_flowchart.png)
+<img src="images/architecture_flowchart.png">
 
 <h2>Results and Discussion</h2>
 <p>In Demand Prediction, Gradient Boosting emerged as the superior model among four candidates, achieving a mean squared error of 9.05, indicating its effectiveness in forecasting product demand across various categories and regions, thereby facilitating inventory management. For Fraud Detection, the LightGBM model stood out with an F1 score of 0.72 and precision of 0.65, outperforming other models. Notable features for detecting fraud included the type of transaction, late delivery risk, shipping mode, and order month. This detection is crucial in mitigating financial losses and refining demand prediction models. Collectively, these models provide a multifaceted approach to improving operational efficiency, securing revenue, and ensuring sustainable business growth through data-driven decision-making.</p>
